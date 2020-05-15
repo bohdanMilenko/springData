@@ -8,4 +8,5 @@ public interface ICustomerService {
     void save(Customer customer);
     boolean remove(int id);
     boolean remove(Customer customer);
+    boolean updateCustomerAddress(int id, String address);
 }

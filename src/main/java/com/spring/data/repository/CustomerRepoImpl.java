@@ -40,4 +40,9 @@ public class CustomerRepoImpl implements  ICustomerRepo {
         }
         return false;
     }
+
+    @Override
+    public boolean update(Customer customerToUpdate) {
+        return customerToUpdate != null;
+    }
 }

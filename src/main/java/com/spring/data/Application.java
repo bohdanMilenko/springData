@@ -24,20 +24,19 @@ public class Application {
         }
 
         ICustomerService customerService = applicationContext.getBean(ICustomerService.class);
-        Customer customer = customerService.findById(1);
+//        Customer customer = customerService.findById(1);
+//        System.out.println(customer.toString());
+//
+//        Customer customer1 = new Customer();
+//        customer1.setName("Bob");
+//        customer1.setAddress("Toronto");
+//        customerService.save(customer1);
+
+        System.out.println(customerService.updateCustomerAddress(2, "15 Brick Road"));
+
+        Customer customer = customerService.findById(2);
         System.out.println(customer.toString());
 
-        Customer customer1 = new Customer();
-        customer1.setName("Bob");
-        customer1.setAddress("Toronto");
-        customerService.save(customer1);
-        //Hibernate updates Object before writing to db,
-        // does it mean we can use this object.id afterwards and assume it 100% corresponds?
-
-        //my table didn't have an AUTOINCREMENT turned on, and Hibernate failed to assign a value.
-        //Is it because of the strategy?
-
-        System.out.println();
     }
 
 }

@@ -8,4 +8,5 @@ public interface ICustomerRepo {
     void save(Customer customer);
     boolean remove(int id);
     boolean remove(Customer customer);
+    boolean update(Customer customerToUpdate);
 }

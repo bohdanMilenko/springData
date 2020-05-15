@@ -39,4 +39,16 @@ public class CustomerService implements ICustomerService{
     public boolean remove(Customer customer) {
         return false;
     }
+
+    @Override
+    @Transactional
+    public boolean updateCustomerAddress(int id, String address) {
+        Customer customerToUpdate = findById(id);
+        if(customerToUpdate!=null){
+            customerToUpdate.setAddress(address);
+            return customerRepo.update(customerToUpdate);
+        }else {
+            return false;
+        }
+    }
 }
