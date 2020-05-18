@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MerchantService implements IMerchantService {
+public class MerchantServiceImpl implements IMerchantService {
 
     //Do I need to create only a default constructor?
 
@@ -16,7 +16,7 @@ public class MerchantService implements IMerchantService {
 
     private IMerchantRepository merchantRepository;
 
-    public MerchantService(IMerchantRepository merchantRepository) {
+    public MerchantServiceImpl(IMerchantRepository merchantRepository) {
         this.merchantRepository = merchantRepository;
     }
 

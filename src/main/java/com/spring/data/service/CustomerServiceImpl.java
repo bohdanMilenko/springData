@@ -8,12 +8,15 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 
 @Service
-public class CustomerService implements ICustomerService{
+public class CustomerServiceImpl implements ICustomerService{
 
     @Autowired
     ICustomerRepo customerRepo;
 
-    public CustomerService(ICustomerRepo customerRepo) {
+    public CustomerServiceImpl() {
+    }
+
+    public CustomerServiceImpl(ICustomerRepo customerRepo) {
         this.customerRepo = customerRepo;
     }
 

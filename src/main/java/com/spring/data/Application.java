@@ -2,21 +2,18 @@ package com.spring.data;
 
 import com.spring.data.entity.Customer;
 import com.spring.data.entity.Merchant;
-import com.spring.data.service.CustomerService;
 import com.spring.data.service.ICustomerService;
 import com.spring.data.service.IMerchantService;
-import com.spring.data.service.MerchantService;
+import com.spring.data.service.MerchantServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-
-import java.util.*;
 
 public class Application {
     public static void main(String[] args) {
 
 
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("beans.xml");
-        IMerchantService merchantService = applicationContext.getBean(MerchantService.class);
+        IMerchantService merchantService = applicationContext.getBean(MerchantServiceImpl.class);
         Merchant merchant = merchantService.findById(1);
 
         if(merchant!=null) {
