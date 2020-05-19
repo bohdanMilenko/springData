@@ -37,6 +37,6 @@ public class Merchant {
 
     @Override
     public String toString() {
-        return super.toString();
+        return name;
     }
 }

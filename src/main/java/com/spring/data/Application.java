@@ -2,11 +2,15 @@ package com.spring.data;
 
 import com.spring.data.entity.Customer;
 import com.spring.data.entity.Merchant;
+import com.spring.data.entity.dto.Result;
 import com.spring.data.service.ICustomerService;
 import com.spring.data.service.IMerchantService;
+import com.spring.data.service.IPaymentService;
 import com.spring.data.service.MerchantServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
@@ -16,7 +20,7 @@ public class Application {
         IMerchantService merchantService = applicationContext.getBean(MerchantServiceImpl.class);
         Merchant merchant = merchantService.findById(1);
 
-        if(merchant!=null) {
+        if (merchant != null) {
             System.out.println(merchant.getName());
         }
 
@@ -33,6 +37,15 @@ public class Application {
 
         Customer customer = customerService.findById(2);
         System.out.println(customer.toString());
+
+        IPaymentService paymentService = applicationContext.getBean(IPaymentService.class);
+        System.out.println(paymentService.findById(1));
+
+        List<Result> results = paymentService.
+                getPaymentReport();
+        for(Result r : results){
+            System.out.println(r.toString());
+        }
 
     }
 
