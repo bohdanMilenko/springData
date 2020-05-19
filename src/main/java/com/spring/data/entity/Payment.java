@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "payment")
 public class Payment {
 
     public Payment() {
@@ -61,5 +62,11 @@ public class Payment {
 
     public void setDt(LocalDateTime dt) {
         this.dt = dt;
+    }
+
+
+    @Override
+    public String toString() {
+        return dt + ": " + sumCharged + " was charged by " + merchant.toString();
     }
 }
