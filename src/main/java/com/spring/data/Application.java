@@ -47,6 +47,10 @@ public class Application {
             System.out.println(r.toString());
         }
 
+        List<Merchant> merchantList = merchantService.getSortedByNeedToPay();
+        merchantList.stream()
+                .forEach(m -> System.out.println(m.getPayment()));
+
     }
 
 }
