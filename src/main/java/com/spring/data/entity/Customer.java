@@ -1,9 +1,7 @@
 package com.spring.data.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Customer {
@@ -15,13 +13,19 @@ public class Customer {
     private String name;
     private String address;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "payment", joinColumns = @JoinColumn(name = "customer_id"),
+            inverseJoinColumns = @JoinColumn(name = "merchant_id")   )
+    private Collection<Merchant> merchant;
+
     public Customer() {
     }
 
-    public Customer(int id, String name, String address) {
+    public Customer(int id, String name, String address, Collection<Merchant> merchant) {
         this.id = id;
         this.name = name;
         this.address = address;
+        this.merchant = merchant;
     }
 
     public int getId() {
@@ -46,6 +50,14 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Collection<Merchant> getMerchant() {
+        return merchant;
+    }
+
+    public void setMerchant(Collection<Merchant> merchant) {
+        this.merchant = merchant;
     }
 
     @Override
