@@ -1,9 +1,8 @@
 package com.spring.data.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import java.util.Collection;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -15,6 +14,13 @@ public class Merchant {
     @GeneratedValue(strategy = IDENTITY)
     private int id;
     private String name;
+    @Column(name = "need_to_send")
+    private int needToSend;
+    //name of the merchant object in Payment
+//    @OneToMany(mappedBy = "merchant")
+    @OneToMany(mappedBy = "merchant", fetch = FetchType.EAGER)
+    private Collection<Payment> payment;
+
 
     public Merchant() {
     }
@@ -33,6 +39,23 @@ public class Merchant {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public int getNeedToSend() {
+        return needToSend;
+    }
+
+    public void setNeedToSend(int needToSend) {
+        this.needToSend = needToSend;
+    }
+
+    public Collection<Payment> getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Collection<Payment> payment) {
+        this.payment = payment;
     }
 
     @Override
