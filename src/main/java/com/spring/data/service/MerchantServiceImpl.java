@@ -5,16 +5,15 @@ import com.spring.data.repository.IMerchantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MerchantServiceImpl implements IMerchantService {
-
-    //Do I need to create only a default constructor?
-
-//    @Autowired
-//    private IMerchantRepository merchantRepository;
-//    Another way
-
+    @Autowired
     private IMerchantRepository merchantRepository;
+
+    public MerchantServiceImpl() {
+    }
 
     public MerchantServiceImpl(IMerchantRepository merchantRepository) {
         this.merchantRepository = merchantRepository;
@@ -23,5 +22,11 @@ public class MerchantServiceImpl implements IMerchantService {
     @Override
     public Merchant findById(int id) {
         return merchantRepository.findById(id);
+    }
+
+    @Override
+//    @Transactional
+    public List<Merchant> getSortedByNeedToPay() {
+        return merchantRepository.getSortedByNeedToPay();
     }
 }
