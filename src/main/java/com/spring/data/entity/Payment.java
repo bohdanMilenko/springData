@@ -26,8 +26,12 @@ public class Payment {
     private int sumCharged;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "merchant_id")
     private Merchant merchant;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     @Column(name = "payment_date_time")
     private LocalDateTime dt;
